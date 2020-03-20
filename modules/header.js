@@ -4,15 +4,17 @@ export default class Header {
     this.api = api;
   }
 
-  renderConfirmed(path) {
-    this.api.get(path).then(data => {
-      let total = 0;
+  render() {
+    this.countTotalConfirmed().then(
+      total => (this.container.textContent = total)
+    );
+  }
 
-      for (let country of data) {
-        total += country.confirmed;
-      }
-
-      this.container.textContent = total;
-    });
+  countTotalConfirmed() {
+    return this.api
+      .getAllData()
+      .then(data =>
+        data.reduce((result, country) => result + country.confirmed, 0)
+      );
   }
 }

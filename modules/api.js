@@ -4,8 +4,8 @@ export default class Api {
     this.headers = options.headers;
   }
 
-  get(path) {
-    return fetch(`${this.url}${path}`, {
+  getAllData() {
+    return fetch(`${this.url}/confirmed`, {
       headers: this.headers
     })
       .then(this.checkStatus)

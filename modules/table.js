@@ -4,8 +4,8 @@ export default class Table {
     this.api = api;
   }
 
-  render(path, quantity) {
-    this.filterByConfirmed(path).then(data => {
+  render(quantity) {
+    this.filterByConfirmed().then(data => {
       data
         .slice(0, quantity)
         .map(item => {
@@ -24,8 +24,8 @@ export default class Table {
     });
   }
 
-  filterByConfirmed(path) {
-    return this.api.get(path).then(data => {
+  filterByConfirmed() {
+    return this.api.getAllData().then(data => {
       const country = data.reduce((res, item) => {
         const { countryRegion, confirmed, deaths, recovered } = item;
 
