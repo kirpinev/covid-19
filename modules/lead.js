@@ -4,8 +4,8 @@ export default class Lead {
     this.api = api;
   }
 
-  renderConfirmed(path) {
-    this.api.get(path).then(data => {
+  renderConfirmed() {
+    this.api.getAllData().then(data => {
       let total = 0;
 
       for (let country of data) {

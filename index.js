@@ -16,10 +16,10 @@ const table = new Table(document.querySelector(".table"), api);
 
 const diagram = new Diagram(document.querySelector(".diagram"), api);
 
-lead.renderConfirmed("/confirmed");
+lead.renderConfirmed();
 
-header.renderConfirmed("/confirmed");
+header.renderConfirmed();
 
-table.render("/confirmed", 10);
+table.render(10);
 
-diagram.render("/confirmed", 5);
+diagram.render(5);

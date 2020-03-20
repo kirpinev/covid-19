@@ -4,10 +4,8 @@ export default class Diagram {
     this.api = api;
   }
 
-  render(path, quantity) {
-    this.filterByDeath(path).then(data => {
-      console.log(data);
-
+  render(quantity) {
+    this.filterByDeath().then(data => {
       data
         .slice(0, quantity)
         .map(item => {
@@ -49,8 +47,8 @@ export default class Diagram {
     });
   }
 
-  filterByDeath(path) {
-    return this.api.get(path).then(data => {
+  filterByDeath() {
+    return this.api.getAllData().then(data => {
       const country = data.reduce((res, item) => {
         const { countryRegion, confirmed, deaths, recovered } = item;
 
@@ -68,8 +66,6 @@ export default class Diagram {
         res[countryRegion].recovered += recovered;
         return res;
       }, {});
-
-      console.log(Object.values(country));
 
       return Object.values(country)
         .filter(deaths => deaths.confirmed > 100)
