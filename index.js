@@ -16,10 +16,18 @@ const table = new Table(document.querySelector(".table"), api);
 
 const diagram = new Diagram(document.querySelector(".diagram"), api);
 
-lead.renderConfirmed();
+lead.render();
 
-header.renderConfirmed();
+header.render();
 
 table.render(10);
 
 diagram.render(5);
+
+window.addEventListener("scroll", () => {
+  if (pageYOffset > 100) {
+    document.querySelector(".page__header").style.top = "0";
+  } else {
+    document.querySelector(".page__header").style.top = "-60px";
+  }
+});

@@ -4,7 +4,7 @@ export default class Lead {
     this.api = api;
   }
 
-  renderConfirmed() {
+  render() {
     this.api.getAllData().then(data => {
       let total = 0;
 

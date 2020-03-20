@@ -4,7 +4,7 @@ export default class Header {
     this.api = api;
   }
 
-  renderConfirmed() {
+  render() {
     this.countTotalConfirmed().then(
       total => (this.container.textContent = total)
     );
